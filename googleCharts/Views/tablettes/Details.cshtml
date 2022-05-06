@@ -1,0 +1,42 @@
+﻿@model googleCharts.Models.tablette
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tablette</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.deviceid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deviceid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profilid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profilid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tabid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

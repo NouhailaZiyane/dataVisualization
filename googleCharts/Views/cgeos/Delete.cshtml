@@ -1,0 +1,64 @@
+﻿@model googleCharts.Models.cgeo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cgeo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.libar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.niveau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.niveau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pid)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

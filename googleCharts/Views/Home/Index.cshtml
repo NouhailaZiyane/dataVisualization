@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<style>
+    body {
+        background-color: #B8DFD8
+        ;
+    }
+    #chart, #char, #chartline {
+        height: 450px;
+        
+    }
+
+    #cont {
+        width: 600px;
+        background-color: #B8DFD8;
+    }
+    h1{
+        font-weight:bold;
+    }
+
+</style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+@section Scripts{
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            google.load("visualization", "1", { packages: ["corechart"] });
+            google.setOnLoadCallback(load_page_data);
+            google.setOnLoadCallback(load_page_datam);
+            google.setOnLoadCallback(load_page_datas);
+            google.setOnLoadCallback(load_page_datad);
+        });
+        function load_page_data() {
+    var options = {};
+    options.url = '@Url.Action("GetChartData", "Home")';
+    options.type = "GET";
+    options.dataType = "json";
+        options.success = function (data) {
+           
+
+                var chartData = [
+                    ['Villes', 'Niveau']
+
+                ];
+
+                    chartData.push(["Villes de niveau1",
+                        parseInt(data.niv1)],
+                        ["Villes de niveau2",
+                            parseInt(data.niv2)],
+                        ["Villes de niveau3",
+                            parseInt(data.niv3)],
+                        ["Villes de niveau4",
+                            parseInt(data.niv4)],
+                        ["Villes de niveau5",
+                    parseInt(data.niv5)]);
+
+                var chartDataTable = google.visualization.
+                    arrayToDataTable(chartData);
+
+                var chartOptions = {
+                    title: 'NIVEAUX DES VILLES',
+                    pieHole: 0.4,
+            };
+                var chart = new google.visualization.PieChart
+                    (document.getElementById('chart'));
+                chart.draw(chartDataTable, chartOptions);
+            };
+
+            options.error = function () {
+                $("#msg").html("<h2>Error whileusing Google Charts!</h2>");
+            };
+            $.ajax(options);
+        }
+         
+               
+        /******************************************************************************/
+       
+        
+        function load_page_datam() {
+    var opti = {};
+        opti.url = '@Url.Action("Gettab", "Home")';
+    opti.type = "GET";
+    opti.dataType = "json";
+            opti.success = function (data) {
+                var artData = [
+                    ['Année', 'Nombre de tablettes achetés']
+                ];
+
+               artData.push(["2017",
+                    parseInt(data.an17)],["2018",
+                        parseInt(data.an18)],
+                        ["2019",
+                            parseInt(data.an19)],
+                        ["2020",
+                            parseInt(data.an20)]);
+
+                var artDataTable = google.visualization.arrayToDataTable(artData);
+
+                var artOptions = {
+                    title: 'Tablettes Achetés',
+                    curveType: 'function',
+                    legend: { position: 'bottom' }
+                };
+
+                var art = new google.visualization.LineChart
+                    (document.getElementById('chartline'));
+                art.draw(artDataTable, artOptions);
+            };
+
+    opti.error = function () {
+    $("#msg").html("<h2>Error whileusing Google Charts!</h2>");
+    };
+            $.ajax(opti);
+        }
+   
+
+           
+        function load_page_datas() {
+        var opt = {};
+    opt.url = '@Url.Action("GetChart", "Home")';
+    opt.type = "GET";
+    opt.dataType = "json";
+            opt.success = function (data) {
+                var charData = [
+                    ['Tablette', 'genre']
+                ];
+
+                    charData.push(["Samsung Tab4",
+                        parseInt(data.m1)],
+                        ["autres",
+                        parseInt(data.m2)]);
+
+                var charDataTable = google.visualization.
+                    arrayToDataTable(charData);
+                var charOptions = {
+                    title: "Nombre de tablette",
+                    hAxis: {
+                        title: 'Nombre',
+                        minValue: 0
+                    },
+                    vAxis: {
+                        title: 'Genre de tablette'
+                    }
+                };
+                var char = new google.visualization.BarChart
+                    (document.getElementById('char'));
+                char.draw(charDataTable, charOptions);
+            };
+
+    opt.error = function () {
+    $("#msg").html("<h2>Error whileusing Google Charts!</h2>");
+    };
+            $.ajax(opt);
+        }
+  /****************************************************************************************************************/
+
+            function load_page_datad() {
+        var op = {};
+    op.url = '@Url.Action("Getpos", "Home")';
+    op.type = "GET";
+    op.dataType = "json";
+            op.success = function (data) {
+                var Data = [
+                    ['Tablette', 'genre', { role: 'style' }]
+                ];
+
+                Data.push(["Enquêteurs",
+                        parseInt(data.enqueteurs), 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+                        ["Superviseurs Centrale",
+                            parseInt(data.superviseurs_centrale), 'opacity: 0.2'],
+                        ["Superviseurs Regionale",
+                            parseInt(data.superviseurs_regionale), 'color: #76A7FA'],
+                        ["Informaticiens",
+                            parseInt(data.informaticiens), 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2']);
+
+                var DataTable = google.visualization.
+                    arrayToDataTable(Data);
+
+                var Option = {
+                    title: "Nombre des employés",
+                    width: 600,
+                    height: 400,
+                    bar: { groupWidth: "95%" },
+                    legend: { position: "none" },
+                };
+                var char = new google.visualization.ColumnChart
+                    (document.getElementById('column'));
+                char.draw(DataTable, Option);
+            };
+
+    op.error = function () {
+    $("#msg").html("<h2>Error whileusing Google Charts!</h2>");
+    };
+                $.ajax(op);
+            }
+
+/***************************************************************************************************************/
+            $(document).ready(function () {
+                $.getJSON("/Home/GetData", function (data) {
+
+
+
+                    Highcharts.chart('cont', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Achat des Menages'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                    style: {
+                                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                    }
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Brands',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Menage N 1',
+                                y: data.m1
+                            }, {
+                                name: 'Menage n 2',
+                                y: data.m2
+                            }, {
+                                name: 'Menage n 3',
+                                y: data.m3
+                                }, {
+                                    name: 'Menage n 4',
+                                    y: data.m4
+                                }, {
+                                    name: 'Menage n 5',
+                                    y: data.m5
+                                }, {
+                                    name: 'Menage n 6',
+                                    y: data.m6
+                                },  {
+                                    name: 'Menage n 7',
+                                    y: data.m7
+                                }, {
+                                    name: 'Menage n 8',
+                                    y: data.m8
+                                }, {
+                                    name: 'Menage n 9',
+                                    y: data.m9
+                                }, {
+                                    name: 'Menage n 10',
+                                    y: data.m10
+                                }, {
+                                    name: 'Menage n 11',
+                                    y: data.m11
+                                }, {
+                                    name: 'Menage n 12',
+                                    y: data.m12
+                                }, {
+                                    name: 'Menage n 13',
+                                    y: data.m13
+                                }, {
+                                    name: 'Menage n 14',
+                                    y: data.m14
+                                }, {
+                                    name: 'Menage n 15',
+                                    y: data.m15
+                                }, {
+                                    name: 'Menage n 16',
+                                    y: data.m16
+                                }, {
+                                    name: 'Menage n 17',
+                                    y: data.m17
+                                }, {
+                                    name: 'Menage n 18',
+                                    y: data.m18
+                                }, {
+                                    name: 'Menage n 19',
+                                    y: data.m19
+                                }, {
+                                    name: 'Menage n 20',
+                                    y: data.m20
+                                }, {
+                                    name: 'Menage n 21',
+                                    y: data.m21
+                                }, {
+                                    name: 'Menage n 22',
+                                    y: data.m22
+                                }, {
+                                    name: 'Menage n 23',
+                                    y: data.m23
+                                }, {
+                                    name: 'Menage n 24',
+                                    y: data.m24
+                                }, {
+                                    name: 'Menage n 25',
+                                    y: data.m25
+                                }]
+                        }]
+                    });
+                });
+            });
+
+
+    </script>
+
+
+}
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-1">
+            
+        </div>
+        <div class="col-lg-6">
+            <h1 class="text-center">Application de Visualisation des données</h1>
+        </div>
+
+    </div>
+    <div class="row">
+        
+        
+        <div class="col-lg-6">
+            <div id="chart"></div>
+        </div>
+        <div class="col-lg-6">
+            <div id="cont"></div>
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="char"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div id="column"></div>
+                </div><div class="col-lg-6">
+                    <div id="column"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="chartline"></div>
+                </div>
+                <div class="col-lg-6">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23039BE5&ctz=Africa%2FCasablanca&src=bm91aGFpbGEueml5YW5lQHVpdC5hYy5tYQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=dWl0LmFjLm1hX2NsYXNzcm9vbTA2YzNmNWU3QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19jbGFzc3Jvb21hMzZmNWUxMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb203MDgxYWE5MkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=dWl0LmFjLm1hX2NsYXNzcm9vbWUxYzYxZTUxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZW4ubWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=dWl0LmFjLm1hX2NsYXNzcm9vbTc0MDJjZjkwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=ZnIubWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19jbGFzc3Jvb20yODJkZjI1M0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb21iMzNhMGFkZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb21jNmVkMThlOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb20xYzBjYzAxMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb20yZjQwZGQ2MkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb203MDYyMmEwYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb21iODY3OGY2ZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=dWl0LmFjLm1hX2NsYXNzcm9vbTA0ODUwMjZhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19jbGFzc3Jvb20xM2VhZjRmNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=dWl0LmFjLm1hX2NsYXNzcm9vbTUzN2MwYzI4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%23007b83&color=%23202124&color=%230047a8&color=%23137333&color=%230B8043&color=%23202124&color=%230B8043&color=%230047a8&color=%23b80672&color=%23b80672&color=%23202124&color=%23c26401&color=%230047a8&color=%230047a8&color=%23202124&color=%23137333&color=%23202124&showTz=1&showCalendars=1&showTabs=0&showNav=0&showPrint=0&title=Calendrier" style="border:solid 1px #777" width="600" height="450" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>

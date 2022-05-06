@@ -1,0 +1,138 @@
+﻿@model googleCharts.Models.menage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>menage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.chefmen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chefmen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.epouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.epouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cadet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cadet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.netude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.netude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nbrind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nbrind)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nbrind15)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nbrind15)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nbrindactif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nbrindactif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.revenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.revenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categrvenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categrvenu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

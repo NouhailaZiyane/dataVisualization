@@ -1,0 +1,117 @@
+﻿@model IEnumerable<googleCharts.Models.menage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.chefmen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.epouse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cadet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adresse1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adresse2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sexe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbrind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbrind15)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbrindactif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.revenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categrevenu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.chefmen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.epouse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cadet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adresse1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adresse2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sexe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.netude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nbrind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nbrind15)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nbrindactif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.revenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categrevenu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,56 @@
+﻿@model googleCharts.Models.prog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>prog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.annee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.annee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mois)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mois)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tabid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tabid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flag)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

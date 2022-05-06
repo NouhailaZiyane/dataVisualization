@@ -1,0 +1,42 @@
+﻿@model googleCharts.Models.parametrage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>parametrage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.param)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.param)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decsription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decsription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valeur)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.paramid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

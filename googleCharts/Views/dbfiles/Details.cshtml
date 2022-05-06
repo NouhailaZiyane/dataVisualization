@@ -1,0 +1,58 @@
+﻿@model googleCharts.Models.dbfiles
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>dbfiles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tabid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tabid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datafile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datafile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_envoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_envoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acteurtid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acteurtid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

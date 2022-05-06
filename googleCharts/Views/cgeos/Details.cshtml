@@ -1,0 +1,58 @@
+﻿@model googleCharts.Models.cgeo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cgeo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.libar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.niveau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.niveau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

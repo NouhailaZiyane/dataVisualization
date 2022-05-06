@@ -1,0 +1,58 @@
+﻿@model googleCharts.Models.grappe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>grappe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.se)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.se)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nbrmen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nbrmen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cgid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cgid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
